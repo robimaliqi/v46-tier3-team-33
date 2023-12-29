@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "jest",
-    "build": "npm i && tsc",
+    "build": "npm i && echo 'Install' && tsc && echo 'Transpile'",
     "prestart": "npm run build",
     "start": "NODE_OPTIONS='--max-old-space-size=400' nodemon dist/index.js",
     "lint": "eslint --ext .js,.ts ."
