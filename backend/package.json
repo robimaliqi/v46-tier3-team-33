@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "build": "npm i && echo 'Install' && tsc && echo 'Transpile'",
+    "build": "npm i && tsc",
     "start": "NODE_OPTIONS='--max-old-space-size=400' nodemon dist/index.js",
     "lint": "eslint --ext .js,.ts ."
   },
