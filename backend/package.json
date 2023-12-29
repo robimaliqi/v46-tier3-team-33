@@ -5,9 +5,10 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "jest",
-    "build": "tsc",
+    "build": "npm i && tsc",
     "prestart": "npm run build",
-    "start": "nodemon dist/index.js"
+    "start": "nodemon dist/index.js",
+    "lint": "eslint --ext .js,.ts ."
   },
   "keywords": [],
   "author": "",
