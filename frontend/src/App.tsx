@@ -21,7 +21,7 @@ function App() {
   useEffect(() => {
     const validateToken = async () => {
       try {
-        const response = await fetch("http://localhost:8081/user", {
+        const response = await fetch('/user', {
           method: "GET",
           credentials: "include", // Ensures the request includes the cookie
         });
