@@ -13,7 +13,7 @@ logs
 *.pid
 
 # Environment variables
-# .env
+.env
 
 # OS generated
 .DS_Store
