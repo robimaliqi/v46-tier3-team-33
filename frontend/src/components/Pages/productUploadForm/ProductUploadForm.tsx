@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./productUploadForm.css";
 import { useNavigate } from "react-router-dom";
+import { getApiHost } from "../../../utils/function";
 
 interface FormValues {
   name: string;
@@ -78,7 +79,7 @@ export default function ProductUploadForm() {
     e.preventDefault();
     try {
       // API call
-      const response = await fetch("http://localhost:8081/product", {
+      const response = await fetch(`${getApiHost()}/product`, {
         method: "POST",
         credentials: "include",
         body: newFormData(),

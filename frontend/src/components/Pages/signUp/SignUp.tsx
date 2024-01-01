@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import "./signUp.css"; // Create a CSS file for styling
+import { getApiHost } from "../../../utils/function";
 
 interface SignUpProps {
   isFarmer: boolean;
@@ -71,7 +72,7 @@ const SignUp = (props: SignUpProps) => {
     e.preventDefault();
     try {
       // API call
-      const response = await fetch("http://localhost:8081/signup", {
+      const response = await fetch(`${getApiHost()}/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

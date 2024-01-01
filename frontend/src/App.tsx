@@ -13,6 +13,7 @@ import { useState, useEffect } from "react";
 import UserContext from "./utils/UserContext";
 import { User } from "./utils/interface";
 import PreSignup from "./components/Pages/preSignup/PreSignup";
+import { getApiHost } from "./utils/function";
 
 function App() {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
@@ -21,7 +22,7 @@ function App() {
   useEffect(() => {
     const validateToken = async () => {
       try {
-        const response = await fetch('/user', {
+        const response = await fetch(`${getApiHost()}/user`, {
           method: "GET",
           credentials: "include", // Ensures the request includes the cookie
         });

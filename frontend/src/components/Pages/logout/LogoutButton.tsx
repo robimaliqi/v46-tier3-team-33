@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import UserContext from "../../../utils/UserContext";
+import { getApiHost } from "../../../utils/function";
 
 const LogoutButton: React.FC = () => {
   const { setCurrentUser } = useContext(UserContext);
@@ -9,7 +10,7 @@ const LogoutButton: React.FC = () => {
 
   const handleLogout = async () => {
     try {
-      const response = await fetch("/logout", {
+      const response = await fetch(`${getApiHost()}/logout`, {
         method: "POST",
         credentials: "include",
       });
