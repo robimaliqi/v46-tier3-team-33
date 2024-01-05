@@ -7,7 +7,7 @@ const emailRegexp = new RegExp(
 );
 
 const emailCheck = (req: Request, res: Response, next: NextFunction) => {
-  console.log("");
+  console.log("Got to emailCheck");
   if (!emailRegexp.test(req.body.email)) {
     return res.status(400).send("Invalid email");
   }
@@ -15,7 +15,7 @@ const emailCheck = (req: Request, res: Response, next: NextFunction) => {
 };
 
 const passwordCheck = (req: Request, res: Response, next: NextFunction) => {
-  console.log("");
+  console.log("Got to passwordCheck");
   if (!req.body.password) {
     return res.status(400).send("Invalid password");
   }
