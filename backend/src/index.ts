@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import {
   signup,
   emailCheck,
+  duplicateEmailCheck,
   passwordCheck,
 } from "./controllers/signupController";
 import loginController from "./controllers/loginController";
@@ -38,7 +39,7 @@ app.get("/", (req, res) => {
 
 app.get("/user", jwtVerification, getUserContextController);
 
-app.post("/signup", emailCheck, passwordCheck, signup);
+app.post("/signup", emailCheck, duplicateEmailCheck, passwordCheck, signup);
 
 app.post("/login", loginController);
 
