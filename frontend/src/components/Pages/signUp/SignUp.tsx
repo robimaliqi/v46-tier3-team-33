@@ -80,11 +80,14 @@ const SignUp = (props: SignUpProps) => {
         body: JSON.stringify({ email, password, farmer: props.isFarmer }),
       });
       if (response.ok) {
-        // Assuming the signup is successful, relocate the user to the home page
         navigate("/");
       } else {
-        // Handle signup failure, such as displaying an error message to the user
-        console.log("Sign up failed");
+        const responseData = await response.json();
+        if (response.status === 400 && responseData.error) {
+          console.log("Duplicate email error:");
+        } else {
+          console.log("Sign up failed:");
+        }
       }
     } catch (error) {
       console.error("An error occurred:", error);
@@ -98,7 +101,7 @@ const SignUp = (props: SignUpProps) => {
           <h1>Sign Up</h1>
           <div>
             <label htmlFor="email">Email</label>
-            <br/>
+            <br />
             <input
               id="email"
               type="email"
@@ -111,7 +114,7 @@ const SignUp = (props: SignUpProps) => {
 
           <div>
             <label htmlFor="password">Password</label>
-            <br/>
+            <br />
             <input
               id="password"
               type="password"
@@ -123,7 +126,7 @@ const SignUp = (props: SignUpProps) => {
 
           <div>
             <label htmlFor="repeatpassword">Repeat Password</label>
-            <br/>
+            <br />
             <input
               id="repeatpassword"
               type="password"
