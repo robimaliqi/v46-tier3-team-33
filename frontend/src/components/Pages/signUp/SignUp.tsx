@@ -24,6 +24,7 @@ const SignUp = (props: SignUpProps) => {
     setEmail(e.target.value);
     const emailRule = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     // Check if the email is valid
+    console.log(email);
     if (emailRule.test(email)) {
       setIsEmailValid(true);
     } else {
