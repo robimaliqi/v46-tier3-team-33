@@ -14,6 +14,27 @@ const emailCheck = (req: Request, res: Response, next: NextFunction) => {
   next();
 };
 
+const duplicateEmailCheck = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  console.log("Got to duplicateEmailCheck");
+  try {
+    const existingUser = await UserModel.findOne({ email: req.body.email });
+
+    if (existingUser) {
+      return res.status(400).send("Email already exists");
+    }
+
+    next();
+  } catch (error) {
+    res.status(500).send({
+      error: `Server error: ${error}`,
+    });
+  }
+};
+
 const passwordCheck = (req: Request, res: Response, next: NextFunction) => {
   console.log("Got to passwordCheck");
   if (!req.body.password) {
@@ -45,4 +66,4 @@ const signup = async (req: Request, res: Response) => {
   }
 };
 
-export { signup, emailCheck, passwordCheck };
+export { signup, emailCheck, duplicateEmailCheck , passwordCheck };
