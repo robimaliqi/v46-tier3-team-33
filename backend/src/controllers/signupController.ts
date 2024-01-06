@@ -9,7 +9,7 @@ const emailRegexp = new RegExp(
 const emailCheck = (req: Request, res: Response, next: NextFunction) => {
   console.log("Got to emailCheck");
   if (!emailRegexp.test(req.body.email)) {
-    return res.status(400).send("Invalid email");
+    return res.status(400).json("Invalid email");
   }
   next();
 };
@@ -24,12 +24,12 @@ const duplicateEmailCheck = async (
     const existingUser = await UserModel.findOne({ email: req.body.email });
 
     if (existingUser) {
-      return res.status(400).send("Email already exists");
+      return res.status(400).json("Email already exists");
     }
 
     next();
   } catch (error) {
-    res.status(500).send({
+    res.status(500).json({
       error: `Server error: ${error}`,
     });
   }
@@ -38,7 +38,7 @@ const duplicateEmailCheck = async (
 const passwordCheck = (req: Request, res: Response, next: NextFunction) => {
   console.log("Got to passwordCheck");
   if (!req.body.password) {
-    return res.status(400).send("Invalid password");
+    return res.status(400).json("Invalid password");
   }
   next();
 };
@@ -58,12 +58,12 @@ const signup = async (req: Request, res: Response) => {
     });
 
     await user.save();
-    res.status(200).send(user.toJSON());
+    res.status(200).json(user.toJSON());
   } catch (error) {
-    res.status(500).send({
+    res.status(500).json({
       error: `Server error: ${error}`,
     });
   }
 };
 
-export { signup, emailCheck, duplicateEmailCheck , passwordCheck };
+export { signup, emailCheck, duplicateEmailCheck, passwordCheck };
