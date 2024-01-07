@@ -85,7 +85,7 @@ const SignUp = (props: SignUpProps) => {
       } else {
         const responseData = await response.json();
         if (response.status === 400 && responseData.error) {
-          console.log("Duplicate email error:");
+          console.log(responseData.error);
         } else {
           console.log("Sign up failed:");
         }
