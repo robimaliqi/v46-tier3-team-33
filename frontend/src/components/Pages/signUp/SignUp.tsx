@@ -110,7 +110,7 @@ const SignUp = (props: SignUpProps) => {
               value={email}
               onChange={onHandleEmailChange}
             />
-            {!isEmailValid && <p>Please enter a valid email.</p>}
+            {isEmailValid ? "" : <p>Please enter a valid email.</p>}
           </div>
 
           <div>
