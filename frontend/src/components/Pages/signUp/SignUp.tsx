@@ -87,7 +87,7 @@ const SignUp = (props: SignUpProps) => {
         if (response.status === 400 && responseData.error) {
           console.log(responseData.error);
         } else {
-          console.log("Sign up failed:");
+          console.log("Sign up failed:", responseData.error);
         }
       }
     } catch (error) {
